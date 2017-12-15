@@ -8,7 +8,7 @@ public class ItemPageLocators {
     @FindBy(how = How.ID, using = "add-to-cart")
     public WebElement addToTheBasketButton;
 
-    @FindBy(how = How.XPATH, using = ".//div[@class='inline']/div[@class='price']")
+    @FindBy(how = How.XPATH, using = ".//div[@class='inline']/div[@class='price'] | .//*[@class='m-price m-price--primary']")
     public WebElement priceLabel;
 
     @FindBy(how = How.ID, using = "add-to-cart-si-precart")

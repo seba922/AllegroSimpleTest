@@ -9,7 +9,7 @@ import util.SeleniumExecutor;
 import java.util.List;
 
 public class MainPageLocators {
-    @FindBy(how = How.XPATH, using = ".//*[@id='carousel--carousel1']//div[@class='offer-grid__col offer-grid__col--12 offer-grid__col--6@sm offer-grid__col--4@md offer-grid__col--3@lg']")
+    @FindBy(how = How.CSS, using = "[class='offer-tile__photo']")
     public List<WebElement> promotedItemsList;
 
     @FindBy(how = How.XPATH, using = ".//*[@data-dropdown-id='categories_dropdown']")

@@ -23,7 +23,6 @@ public class ShopBasketSteps extends AbstractPage {
         this.itemPage = new ItemPage();
         this.categoryPage = new CategoryPage();
         this.basketPage = new BasketPage();
-
     }
 
     @When("^Wejść na stronę allegro\\.pl$")
@@ -35,8 +34,17 @@ public class ShopBasketSteps extends AbstractPage {
     public void dodać_do_koszyka_dwie_sztuki_dowolnego_produktu_polecanego_na_stronie_głównej() throws Throwable {
         for (int i = 0; i < 2; i++) {
             mainPage.openPromotedItem(i);
-            summaryPrice = summaryPrice + itemPage.getPrice();
-            itemPage.addItemToTheBasket();
+
+            if (SeleniumExecutor.getPageUrl().contains("uzytkownik")) {
+                categoryPage.openItem(i);
+                summaryPrice = summaryPrice + itemPage.getPrice();
+                itemPage.addItemToTheBasket();
+                SeleniumExecutor.getDriver().navigate().back();
+            } else {
+                summaryPrice = summaryPrice + itemPage.getPrice();
+                itemPage.addItemToTheBasket();
+            }
+
             SeleniumExecutor.getDriver().navigate().back();
         }
     }
